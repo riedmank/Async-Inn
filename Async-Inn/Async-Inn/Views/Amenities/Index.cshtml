@@ -1,0 +1,50 @@
+﻿@model IEnumerable<AsyncInn.Models.Amenities>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<head>
+    <link rel="stylesheet" href="~/StyleSheet.css" />
+</head>
+
+<h2>Add Amenities</h2>
+
+<nav>
+    <a href="/Hotels">Add a Hotel</a>
+    <a href="/Amenities">Add Amenities</a>
+    <a href="/Rooms">Add a Room</a>
+    <a href="/HotelRooms">Add a Room to a Hotel</a>
+    <a href="/Home">Home</a>
+</nav>
+
+<article>
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.AmenitiesID">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.AmenitiesID">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.AmenitiesID">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</article>
