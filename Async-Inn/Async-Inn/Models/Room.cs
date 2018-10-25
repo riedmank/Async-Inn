@@ -17,8 +17,8 @@ namespace AsyncInn.Models
 
     public enum Layout
     {
-        Studio,
-        OneBedroom,
-        TwoBedroom
+        Studio = 0,
+        OneBedroom = 1,
+        TwoBedroom = 2
     }
 }
