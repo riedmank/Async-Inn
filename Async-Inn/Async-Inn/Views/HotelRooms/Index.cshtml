@@ -4,6 +4,10 @@
     ViewData["Title"] = "Index";
 }
 
+<head>
+    <link rel="stylesheet" href="~/StyleSheet.css" />
+</head>
+
 <h2>Add Rooms to a Hotel</h2>
 
 <nav>
@@ -14,48 +18,51 @@
     <a href="/Home">Home</a>
 </nav>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Rate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PetFriendly)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Room)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Hotel)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Rate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PetFriendly)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Room.RoomID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Hotel.HotelID)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.RoomNumber">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.RoomNumber">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.RoomNumber">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<article>
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Rate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PetFriendly)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Room)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Hotel)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Rate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PetFriendly)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Room.RoomID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Hotel.HotelID)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.RoomNumber">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.RoomNumber">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.RoomNumber">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</article>
