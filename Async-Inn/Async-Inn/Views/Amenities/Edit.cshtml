@@ -4,31 +4,46 @@
     ViewData["Title"] = "Edit";
 }
 
+<head>
+    <link rel="stylesheet" href="~/StyleSheet.css" />
+</head>
+<h2>Async Inn Hotel Manager</h2>
+<nav>
+    <a href="/Hotels">Add a Hotel</a>
+    <a href="/Amenities">Add Amenities</a>
+    <a href="/Rooms">Add a Room</a>
+    <a href="/HotelRooms">Add a Room to a Hotel</a>
+    <a href="/Home">Home</a>
+</nav>
+
 <h2>Edit</h2>
 
-<h4>Amenities</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="AmenitiesID" />
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </form>
+<article>
+
+    <h4>Amenities</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="AmenitiesID" />
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </form>
+        </div>
     </div>
-</div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
+</article>
