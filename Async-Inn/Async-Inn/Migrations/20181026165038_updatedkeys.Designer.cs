@@ -3,14 +3,16 @@ using AsyncInn.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AsyncInn.Migrations
 {
     [DbContext(typeof(AsyncInnDbContext))]
-    partial class AsyncInnDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181026165038_updatedkeys")]
+    partial class updatedkeys
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -50,15 +52,6 @@ namespace AsyncInn.Migrations
                     b.HasKey("HotelID");
 
                     b.ToTable("Hotels");
-
-                    b.HasData(
-                        new { HotelID = 1, Address = "New York", Name = "Plaza", Phone = "555-0123" },
-                        new { HotelID = 2, Address = "Paris", Name = "Hotel Ritz", Phone = "555-0123" },
-                        new { HotelID = 3, Address = "London", Name = "Claridges", Phone = "555-0123" },
-                        new { HotelID = 4, Address = "Singapore", Name = "Raffles", Phone = "555-0123" },
-                        new { HotelID = 5, Address = "India", Name = "Taj Mahal Palace", Phone = "555-0123" },
-                        new { HotelID = 6, Address = "Los Angeles", Name = "Beverly Hills Hotel", Phone = "555-0123" }
-                    );
                 });
 
             modelBuilder.Entity("AsyncInn.Models.HotelRoom", b =>
@@ -98,15 +91,6 @@ namespace AsyncInn.Migrations
                     b.HasKey("RoomID");
 
                     b.ToTable("Rooms");
-
-                    b.HasData(
-                        new { RoomID = 1, Layout = 0, Name = "The Barrens Bedroom" },
-                        new { RoomID = 2, Layout = 0, Name = "The Tanaris Niche" },
-                        new { RoomID = 3, Layout = 1, Name = "The Ashenvale Forest Den" },
-                        new { RoomID = 4, Layout = 1, Name = "The Hinterlands Accommodation" },
-                        new { RoomID = 5, Layout = 2, Name = "The Badlands Cabin" },
-                        new { RoomID = 6, Layout = 2, Name = "The Stranglethorn Vale Cabin" }
-                    );
                 });
 
             modelBuilder.Entity("AsyncInn.Models.RoomAmenities", b =>
