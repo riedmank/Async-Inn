@@ -10,7 +10,11 @@ namespace AsyncInn.Models
     {
         [Key]
         public int RoomNumber { get; set; }
+        [Required]
+        [Display(Name = "Hotel Name")]
         public int HotelID { get; set; }
+        [Required]
+        [Display(Name = "Room Name")]
         public int RoomID { get; set; }
         [Required]
         [Display(Name = "Nightly Rate")]

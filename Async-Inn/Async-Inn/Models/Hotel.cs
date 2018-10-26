@@ -16,7 +16,7 @@ namespace AsyncInn.Models
         [Display(Name = "Hotel Address")]
         public string Address { get; set; }
         [Required]
-        [Display(Name = "Hote Phone Number")]
+        [Display(Name = "Hotel Phone Number")]
         public string Phone { get; set; }
 
         public ICollection<HotelRoom> HotelRooms { get; set; }

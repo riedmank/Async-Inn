@@ -1,4 +1,4 @@
-﻿@model IEnumerable<AsyncInn.Models.Room>
+﻿@model IEnumerable<AsyncInn.Models.RoomAmenities>
 
 @{
     ViewData["Title"] = "Index";
@@ -7,9 +7,7 @@
 <head>
     <link rel="stylesheet" href="~/StyleSheet.css" />
 </head>
-
-<h2>Add a Room</h2>
-
+<h2>Async Inn Hotel Manager</h2>
 <nav>
     <a href="/Home">Home</a>
     <a href="/Hotels">Add a Hotel</a>
@@ -19,7 +17,10 @@
     <a href="/RoomAmenities">View Amenities in each Room</a>
 </nav>
 
+<h2>Index</h2>
+
 <article>
+
     <p>
         <a asp-action="Create">Create New</a>
     </p>
@@ -27,10 +28,10 @@
         <thead>
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Name)
+                    @Html.DisplayNameFor(model => model.Room)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Layout)
+                    @Html.DisplayNameFor(model => model.Amenities)
                 </th>
                 <th></th>
             </tr>
@@ -40,18 +41,19 @@
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Name)
+                        @Html.DisplayFor(modelItem => item.Room.Name)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Layout)
+                        @Html.DisplayFor(modelItem => item.Amenities.Name)
                     </td>
                     <td>
-                        <a asp-action="Edit" asp-route-id="@item.RoomID">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.RoomID">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@item.RoomID">Delete</a>
+                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
                     </td>
                 </tr>
             }
         </tbody>
     </table>
+
 </article>

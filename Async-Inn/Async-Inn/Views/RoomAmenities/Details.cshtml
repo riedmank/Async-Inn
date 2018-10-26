@@ -1,4 +1,4 @@
-﻿@model AsyncInn.Models.Room
+﻿@model AsyncInn.Models.RoomAmenities
 
 @{
     ViewData["Title"] = "Details";
@@ -22,25 +22,26 @@
 <article>
 
     <div>
-        <h4>Room</h4>
+        <h4>Room Amenities</h4>
         <hr />
         <dl class="dl-horizontal">
             <dt>
-                @Html.DisplayNameFor(model => model.Name)
+                @Html.DisplayNameFor(model => model.Room)
             </dt>
             <dd>
-                @Html.DisplayFor(model => model.Name)
+                @Html.DisplayFor(model => model.Room.Name)
             </dd>
             <dt>
-                @Html.DisplayNameFor(model => model.Layout)
+                @Html.DisplayNameFor(model => model.Amenities)
             </dt>
             <dd>
-                @Html.DisplayFor(model => model.Layout)
+                @Html.DisplayFor(model => model.Amenities.Name)
             </dd>
         </dl>
     </div>
     <div>
-        <a asp-action="Edit" asp-route-id="@Model.RoomID">Edit</a> |
+        @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
         <a asp-action="Index">Back to List</a>
     </div>
+
 </article>

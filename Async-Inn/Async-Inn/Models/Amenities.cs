@@ -10,7 +10,7 @@ namespace AsyncInn.Models
     {
         public int AmenitiesID { get; set; }
         [Required]
-        [Display(Name = "Amenitie Name")]
+        [Display(Name = "Amenity Name")]
         public string Name { get; set; }
 
         public ICollection<RoomAmenities> RoomAmenities { get; set; }
