@@ -49,8 +49,8 @@ namespace AsyncInn.Controllers
         // GET: HotelRooms/Create
         public IActionResult Create()
         {
-            ViewData["HotelID"] = new SelectList(_context.Hotels, "HotelID", "HotelID");
-            ViewData["RoomID"] = new SelectList(_context.Rooms, "RoomID", "RoomID");
+            ViewData["HotelID"] = new SelectList(_context.Hotels, "HotelID", "Name");
+            ViewData["RoomID"] = new SelectList(_context.Rooms, "RoomID", "Name");
             return View();
         }
 
@@ -67,8 +67,8 @@ namespace AsyncInn.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["HotelID"] = new SelectList(_context.Hotels, "HotelID", "Hotel Name", hotelRoom.HotelID);
-            ViewData["RoomID"] = new SelectList(_context.Rooms, "RoomID", "Room Name", hotelRoom.RoomID);
+            ViewData["HotelID"] = new SelectList(_context.Hotels, "HotelID", "Name", hotelRoom.Hotel.Name);
+            ViewData["RoomID"] = new SelectList(_context.Rooms, "RoomID", "Name", hotelRoom.Room.Name);
             return View(hotelRoom);
         }
 
@@ -85,8 +85,8 @@ namespace AsyncInn.Controllers
             {
                 return NotFound();
             }
-            ViewData["HotelID"] = new SelectList(_context.Hotels, "HotelID", "Hotel Name", hotelRoom.HotelID);
-            ViewData["RoomID"] = new SelectList(_context.Rooms, "RoomID", "Room Name", hotelRoom.RoomID);
+            ViewData["HotelID"] = new SelectList(_context.Hotels, "HotelID", "Name", hotelRoom.HotelID);
+            ViewData["RoomID"] = new SelectList(_context.Rooms, "RoomID", "Name", hotelRoom.RoomID);
             return View(hotelRoom);
         }
 
@@ -122,8 +122,8 @@ namespace AsyncInn.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["HotelID"] = new SelectList(_context.Hotels, "HotelID", "Hotel Name", hotelRoom.HotelID);
-            ViewData["RoomID"] = new SelectList(_context.Rooms, "RoomID", "Room Name", hotelRoom.RoomID);
+            ViewData["HotelID"] = new SelectList(_context.Hotels, "HotelID", "Name", hotelRoom.HotelID);
+            ViewData["RoomID"] = new SelectList(_context.Rooms, "RoomID", "Name", hotelRoom.RoomID);
             return View(hotelRoom);
         }
 
