@@ -102,6 +102,33 @@ namespace AsyncInn.Data
                     Layout = Layout.TwoBedroom
                 }
                 );
+            modelBuilder.Entity<Amenities>().HasData(
+                new Amenities
+                {
+                    AmenitiesID = 1,
+                    Name = "Plasma Screen TV"
+                },
+                new Amenities
+                {
+                    AmenitiesID = 2,
+                    Name = "Jacuzzi",
+                },
+                new Amenities
+                {
+                    AmenitiesID = 3,
+                    Name = "Putting Green"
+                },
+                new Amenities
+                {
+                    AmenitiesID = 4,
+                    Name = "Basketball Court"
+                },
+                new Amenities
+                {
+                    AmenitiesID = 5,
+                    Name = "In-Room Hibachi Grill with 24 hour Chef"
+                }
+                );
         }
 
         public DbSet<Room> Rooms { get; set; }
