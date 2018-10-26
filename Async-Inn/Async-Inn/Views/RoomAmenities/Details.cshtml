@@ -1,4 +1,4 @@
-﻿@model AsyncInn.Models.Hotel
+﻿@model AsyncInn.Models.RoomAmenities
 
 @{
     ViewData["Title"] = "Details";
@@ -22,31 +22,25 @@
 <article>
 
     <div>
-        <h4>Hotel</h4>
+        <h4>RoomAmenities</h4>
         <hr />
         <dl>
             <dt>
-                @Html.DisplayNameFor(model => model.Name)
+                @Html.DisplayNameFor(model => model.Room)
             </dt>
             <dd>
-                @Html.DisplayFor(model => model.Name)
+                @Html.DisplayFor(model => model.Room.Name)
             </dd>
             <dt>
-                @Html.DisplayNameFor(model => model.Address)
+                @Html.DisplayNameFor(model => model.Amenities)
             </dt>
             <dd>
-                @Html.DisplayFor(model => model.Address)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.Phone)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Phone)
+                @Html.DisplayFor(model => model.Amenities.Name)
             </dd>
         </dl>
     </div>
     <div>
-        <a asp-action="Edit" asp-route-id="@Model.HotelID">Edit</a> |
+        @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
         <a asp-action="Index">Back to List</a>
     </div>
 

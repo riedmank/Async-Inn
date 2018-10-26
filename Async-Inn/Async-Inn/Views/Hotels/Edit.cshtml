@@ -9,11 +9,12 @@
 </head>
 <h2>Async Inn Hotel Manager</h2>
 <nav>
+    <a href="/Home">Home</a>
     <a href="/Hotels">Add a Hotel</a>
     <a href="/Amenities">Add Amenities</a>
     <a href="/Rooms">Add a Room</a>
     <a href="/HotelRooms">Add a Room to a Hotel</a>
-    <a href="/Home">Home</a>
+    <a href="/RoomAmenities">View Amenities in each Room</a>
 </nav>
 
 <h2>Edit</h2>
@@ -22,28 +23,28 @@
 
     <h4>Hotel</h4>
     <hr />
-    <div class="row">
-        <div class="col-md-4">
+    <div>
+        <div>
             <form asp-action="Edit">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div asp-validation-summary="ModelOnly"></div>
                 <input type="hidden" asp-for="HotelID" />
-                <div class="form-group">
-                    <label asp-for="Name" class="control-label"></label>
-                    <input asp-for="Name" class="form-control" />
-                    <span asp-validation-for="Name" class="text-danger"></span>
+                <div>
+                    <label asp-for="Name"></label>
+                    <input asp-for="Name" />
+                    <span asp-validation-for="Name"></span>
                 </div>
-                <div class="form-group">
-                    <label asp-for="Address" class="control-label"></label>
-                    <input asp-for="Address" class="form-control" />
-                    <span asp-validation-for="Address" class="text-danger"></span>
+                <div>
+                    <label asp-for="Address"></label>
+                    <input asp-for="Address" />
+                    <span asp-validation-for="Address" ></span>
                 </div>
-                <div class="form-group">
-                    <label asp-for="Phone" class="control-label"></label>
-                    <input asp-for="Phone" class="form-control" />
-                    <span asp-validation-for="Phone" class="text-danger"></span>
+                <div>
+                    <label asp-for="Phone"></label>
+                    <input asp-for="Phone" />
+                    <span asp-validation-for="Phone"></span>
                 </div>
-                <div class="form-group">
-                    <input type="submit" value="Save" class="btn btn-default" />
+                <div>
+                    <input type="submit" value="Save" />
                 </div>
             </form>
         </div>
@@ -52,9 +53,9 @@
     <div>
         <a asp-action="Index">Back to List</a>
     </div>
+</article>
 
     @section Scripts {
         @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     }
 
-</article>

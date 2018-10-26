@@ -3,14 +3,16 @@ using AsyncInn.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AsyncInn.Migrations
 {
     [DbContext(typeof(AsyncInnDbContext))]
-    partial class AsyncInnDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181026173112_addedseedvalues")]
+    partial class addedseedvalues
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,14 +32,6 @@ namespace AsyncInn.Migrations
                     b.HasKey("AmenitiesID");
 
                     b.ToTable("Amenities");
-
-                    b.HasData(
-                        new { AmenitiesID = 1, Name = "Plasma Screen TV" },
-                        new { AmenitiesID = 2, Name = "Jacuzzi" },
-                        new { AmenitiesID = 3, Name = "Putting Green" },
-                        new { AmenitiesID = 4, Name = "Basketball Court" },
-                        new { AmenitiesID = 5, Name = "In-Room Hibachi Grill with 24 hour Chef" }
-                    );
                 });
 
             modelBuilder.Entity("AsyncInn.Models.Hotel", b =>

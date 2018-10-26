@@ -9,46 +9,47 @@
 </head>
 <h2>Async Inn Hotel Manager</h2>
 <nav>
+    <a href="/Home">Home</a>
     <a href="/Hotels">Add a Hotel</a>
     <a href="/Amenities">Add Amenities</a>
     <a href="/Rooms">Add a Room</a>
     <a href="/HotelRooms">Add a Room to a Hotel</a>
-    <a href="/Home">Home</a>
+    <a href="/RoomAmenities">View Amenities in each Room</a>
 </nav>
 
 <h2>Create</h2>
 
 <article>
 
-<h4>HotelRoom</h4>
+<h4>Hotel Room</h4>
 
     <hr />
-    <div class="row">
-        <div class="col-md-4">
+    <div>
+        <div>
             <form asp-action="Create">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div asp-validation-summary="ModelOnly"></div>
                 <div class="form-group">
-                    <label asp-for="HotelID" class="control-label"></label>
-                    <select asp-for="HotelID" class="form-control" asp-items="ViewBag.HotelID"></select>
+                    <label asp-for="HotelID"></label>
+                    <select asp-for="HotelID" asp-items="ViewBag.HotelID"></select>
                 </div>
                 <div class="form-group">
-                    <label asp-for="RoomID" class="control-label"></label>
-                    <select asp-for="RoomID" class="form-control" asp-items="ViewBag.RoomID"></select>
+                    <label asp-for="RoomID"></label>
+                    <select asp-for="RoomID" asp-items="ViewBag.RoomID"></select>
                 </div>
-                <div class="form-group">
-                    <label asp-for="Rate" class="control-label"></label>
-                    <input asp-for="Rate" class="form-control" />
-                    <span asp-validation-for="Rate" class="text-danger"></span>
+                <div>
+                    <label asp-for="Rate"></label>
+                    <input asp-for="Rate" />
+                    <span asp-validation-for="Rate"></span>
                 </div>
-                <div class="form-group">
-                    <div class="checkbox">
+                <div>
+                    <div>
                         <label>
                             <input asp-for="PetFriendly" /> @Html.DisplayNameFor(model => model.PetFriendly)
                         </label>
                     </div>
                 </div>
-                <div class="form-group">
-                    <input type="submit" value="Create" class="btn btn-default" />
+                <div>
+                    <input type="submit" value="Create" />
                 </div>
             </form>
         </div>
@@ -57,9 +58,9 @@
     <div>
         <a asp-action="Index">Back to List</a>
     </div>
+</article>
 
     @section Scripts {
         @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     }
 
-</article>

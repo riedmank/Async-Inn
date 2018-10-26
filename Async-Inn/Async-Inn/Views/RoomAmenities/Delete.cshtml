@@ -1,4 +1,4 @@
-﻿@model AsyncInn.Models.Room
+﻿@model AsyncInn.Models.RoomAmenities
 
 @{
     ViewData["Title"] = "Delete";
@@ -17,30 +17,31 @@
     <a href="/RoomAmenities">View Amenities in each Room</a>
 </nav>
 
-<article>
-
 <h2>Delete</h2>
+
+<article>
 
     <h3>Are you sure you want to delete this?</h3>
     <div>
-        <h4>Room</h4>
+        <h4>RoomAmenities</h4>
         <hr />
         <dl>
             <dt>
-                @Html.DisplayNameFor(model => model.Name)
+                @Html.DisplayNameFor(model => model.Room)
             </dt>
             <dd>
-                @Html.DisplayFor(model => model.Name)
+                @Html.DisplayFor(model => model.Room.Name)
             </dd>
             <dt>
-                @Html.DisplayNameFor(model => model.Layout)
+                @Html.DisplayNameFor(model => model.Amenities)
             </dt>
             <dd>
-                @Html.DisplayFor(model => model.Layout)
+                @Html.DisplayFor(model => model.Amenities.Name)
             </dd>
         </dl>
 
         <form asp-action="Delete">
+            <input type="hidden" asp-for="AmenitiesID" />
             <input type="hidden" asp-for="RoomID" />
             <input type="submit" value="Delete" /> |
             <a asp-action="Index">Back to List</a>

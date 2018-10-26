@@ -9,11 +9,12 @@
 </head>
 <h2>Async Inn Hotel Manager</h2>
 <nav>
+    <a href="/Home">Home</a>
     <a href="/Hotels">Add a Hotel</a>
     <a href="/Amenities">Add Amenities</a>
     <a href="/Rooms">Add a Room</a>
     <a href="/HotelRooms">Add a Room to a Hotel</a>
-    <a href="/Home">Home</a>
+    <a href="/RoomAmenities">View Amenities in each Room</a>
 </nav>
 
 <h2>Details</h2>
@@ -21,9 +22,9 @@
 <article>
 
     <div>
-        <h4>HotelRoom</h4>
+        <h4>Hotel Room</h4>
         <hr />
-        <dl class="dl-horizontal">
+        <dl>
             <dt>
                 @Html.DisplayNameFor(model => model.Rate)
             </dt>
@@ -40,13 +41,13 @@
                 @Html.DisplayNameFor(model => model.Room)
             </dt>
             <dd>
-                @Html.DisplayFor(model => model.Room.RoomID)
+                @Html.DisplayFor(model => model.Room.Name)
             </dd>
             <dt>
                 @Html.DisplayNameFor(model => model.Hotel)
             </dt>
             <dd>
-                @Html.DisplayFor(model => model.Hotel.HotelID)
+                @Html.DisplayFor(model => model.Hotel.Name)
             </dd>
         </dl>
     </div>

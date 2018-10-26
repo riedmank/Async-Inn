@@ -1,7 +1,7 @@
-﻿@model AsyncInn.Models.Amenities
+﻿@model AsyncInn.Models.RoomAmenities
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Edit";
 }
 
 <head>
@@ -17,22 +17,20 @@
     <a href="/RoomAmenities">View Amenities in each Room</a>
 </nav>
 
-<h2>Create</h2>
+<h2>Edit</h2>
 
 <article>
-    <h4>Amenities</h4>
+
+    <h4>RoomAmenities</h4>
     <hr />
     <div>
         <div>
-            <form asp-action="Create">
+            <form asp-action="Edit">
                 <div asp-validation-summary="ModelOnly"></div>
+                <input type="hidden" asp-for="AmenitiesID" />
+                <input type="hidden" asp-for="RoomID" />
                 <div>
-                    <label asp-for="Name"></label>
-                    <input asp-for="Name" />
-                    <span asp-validation-for="Name" ></span>
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Create" />
+                    <input type="submit" value="Save" />
                 </div>
             </form>
         </div>
@@ -41,8 +39,9 @@
     <div>
         <a asp-action="Index">Back to List</a>
     </div>
+
 </article>
 
-    @section Scripts {
-        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-    }
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
