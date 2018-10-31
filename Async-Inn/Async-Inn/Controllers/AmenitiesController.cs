@@ -34,7 +34,7 @@ namespace AsyncInn.Controllers
                 return NotFound();
             }
 
-            Amenities amenities = await _amenities.GetAmenities(id);
+            var amenities = await _amenities.GetAmenities(id);
             
             if (amenities == null)
             {
@@ -73,7 +73,7 @@ namespace AsyncInn.Controllers
                 return NotFound();
             }
 
-            Amenities amenities = await _amenities.GetAmenities(id);
+            var amenities = await _amenities.GetAmenities(id);
 
             if (amenities == null)
             {
@@ -124,7 +124,7 @@ namespace AsyncInn.Controllers
                 return NotFound();
             }
 
-            Amenities amenities = await _amenities.GetAmenities(id);
+            var amenities = await _amenities.GetAmenities(id);
                
             if (amenities == null)
             {

@@ -34,7 +34,7 @@ namespace AsyncInn.Controllers
                 return NotFound();
             }
 
-            Room room = await _room.GetRoom(id);
+            var room = await _room.GetRoom(id);
 
             if (room == null)
             {
@@ -73,7 +73,7 @@ namespace AsyncInn.Controllers
                 return NotFound();
             }
 
-            Room room = await _room.GetRoom(id);
+            var room = await _room.GetRoom(id);
 
             if (room == null)
             {
@@ -124,7 +124,7 @@ namespace AsyncInn.Controllers
                 return NotFound();
             }
 
-            Room room = await _room.GetRoom(id);
+            var room = await _room.GetRoom(id);
 
             if (room == null)
             {

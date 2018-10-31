@@ -25,7 +25,7 @@ namespace AsyncInn.Models.Services
 
         public async Task DeleteRoom(int id)
         {
-            Room room = await GetRoom(id);
+            var room = await GetRoom(id);
             _context.Rooms.Remove(room);
             await _context.SaveChangesAsync();
         }
@@ -33,6 +33,15 @@ namespace AsyncInn.Models.Services
         public async Task<Room> GetRoom(int? id)
         {
             return await _context.Rooms.FirstOrDefaultAsync(x => x.RoomID == id);
+        }
+
+        public IEnumerable<RoomAmenities> GetRoomAmenitiesByRoom(int RoomID)
+        {
+            var roomAmenities = _context.RoomAmenities
+                .Where(x => x.RoomID == RoomID)
+                .Include(a => a.Amenities)
+                .Include(r => r.Room);
+            return roomAmenities;
         }
 
         public async Task<List<Room>> GetRooms()

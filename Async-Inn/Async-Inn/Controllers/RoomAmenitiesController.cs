@@ -7,160 +7,155 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AsyncInn.Data;
 using AsyncInn.Models;
+using AsyncInn.Models.Interfaces;
 
 namespace AsyncInn.Controllers
 {
     public class RoomAmenitiesController : Controller
     {
-        private readonly AsyncInnDbContext _context;
+        private readonly IAmenities _amenity;
+        private readonly IRoom _room;
 
-        public RoomAmenitiesController(AsyncInnDbContext context)
+        public RoomAmenitiesController(IAmenities amenity, IRoom room)
         {
-            _context = context;
+            _amenity = amenity;
+            _room = room;
         }
 
-        // GET: RoomAmenities
-        public async Task<IActionResult> Index()
-        {
-            var asyncInnDbContext = _context.RoomAmenities.Include(r => r.Amenities).Include(r => r.Room);
-            return View(await asyncInnDbContext.ToListAsync());
-        }
+    //    // GET: RoomAmenities
+    //    public async Task<IActionResult> Index()
+    //    {
+    //        var asyncInnDbContext = _context.RoomAmenities.Include(r => r.Amenities).Include(r => r.Room);
+    //        return View(await asyncInnDbContext.ToListAsync());
+    //    }
 
-        // GET: RoomAmenities/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+    //    // GET: RoomAmenities/Details/5
+    //    public IActionResult Details(int id)
+    //    {
+    //        var roomAmenities = _room.GetRoomAmenitiesByRoom(id);
+    //        if (roomAmenities == null)
+    //        {
+    //            return NotFound();
+    //        }
 
-            var roomAmenities = await _context.RoomAmenities
-                .Include(r => r.Amenities)
-                .Include(r => r.Room)
-                .FirstOrDefaultAsync(m => m.AmenitiesID == id);
-            if (roomAmenities == null)
-            {
-                return NotFound();
-            }
+    //        return View(roomAmenities);
+    //    }
 
-            return View(roomAmenities);
-        }
+    //    // GET: RoomAmenities/Create
+    //    public IActionResult Create()
+    //    {
+    //        ViewData["AmenitiesID"] = new SelectList(_context.Amenities, "AmenitiesID", "Name");
+    //        ViewData["RoomID"] = new SelectList(_context.Rooms, "RoomID", "Name");
+    //        return View();
+    //    }
 
-        // GET: RoomAmenities/Create
-        public IActionResult Create()
-        {
-            ViewData["AmenitiesID"] = new SelectList(_context.Amenities, "AmenitiesID", "Name");
-            ViewData["RoomID"] = new SelectList(_context.Rooms, "RoomID", "Name");
-            return View();
-        }
+    //    // POST: RoomAmenities/Create
+    //    // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+    //    // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+    //    [HttpPost]
+    //    [ValidateAntiForgeryToken]
+    //    public async Task<IActionResult> Create([Bind("AmenitiesID,RoomID")] RoomAmenities roomAmenities)
+    //    {
+    //        if (ModelState.IsValid)
+    //        {
+    //            _context.Add(roomAmenities);
+    //            await _context.SaveChangesAsync();
+    //            return RedirectToAction(nameof(Index));
+    //        }
+    //        ViewData["AmenitiesID"] = new SelectList(_context.Amenities, "AmenitiesID", "Name", roomAmenities.AmenitiesID);
+    //        ViewData["RoomID"] = new SelectList(_context.Rooms, "RoomID", "Name", roomAmenities.RoomID);
+    //        return View(roomAmenities);
+    //    }
 
-        // POST: RoomAmenities/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("AmenitiesID,RoomID")] RoomAmenities roomAmenities)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(roomAmenities);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["AmenitiesID"] = new SelectList(_context.Amenities, "AmenitiesID", "Name", roomAmenities.AmenitiesID);
-            ViewData["RoomID"] = new SelectList(_context.Rooms, "RoomID", "Name", roomAmenities.RoomID);
-            return View(roomAmenities);
-        }
+    //    // GET: RoomAmenities/Edit/5
+    //    public async Task<IActionResult> Edit(int? id)
+    //    {
+    //        if (id == null)
+    //        {
+    //            return NotFound();
+    //        }
 
-        // GET: RoomAmenities/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+    //        var roomAmenities = await _context.RoomAmenities.FindAsync(id);
+    //        if (roomAmenities == null)
+    //        {
+    //            return NotFound();
+    //        }
+    //        ViewData["AmenitiesID"] = new SelectList(_context.Amenities, "AmenitiesID", "Name", roomAmenities.AmenitiesID);
+    //        ViewData["RoomID"] = new SelectList(_context.Rooms, "RoomID", "Name", roomAmenities.RoomID);
+    //        return View(roomAmenities);
+    //    }
 
-            var roomAmenities = await _context.RoomAmenities.FindAsync(id);
-            if (roomAmenities == null)
-            {
-                return NotFound();
-            }
-            ViewData["AmenitiesID"] = new SelectList(_context.Amenities, "AmenitiesID", "Name", roomAmenities.AmenitiesID);
-            ViewData["RoomID"] = new SelectList(_context.Rooms, "RoomID", "Name", roomAmenities.RoomID);
-            return View(roomAmenities);
-        }
+    //    // POST: RoomAmenities/Edit/5
+    //    // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+    //    // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+    //    [HttpPost]
+    //    [ValidateAntiForgeryToken]
+    //    public async Task<IActionResult> Edit(int id, [Bind("AmenitiesID,RoomID")] RoomAmenities roomAmenities)
+    //    {
+    //        if (id != roomAmenities.AmenitiesID)
+    //        {
+    //            return NotFound();
+    //        }
 
-        // POST: RoomAmenities/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("AmenitiesID,RoomID")] RoomAmenities roomAmenities)
-        {
-            if (id != roomAmenities.AmenitiesID)
-            {
-                return NotFound();
-            }
+    //        if (ModelState.IsValid)
+    //        {
+    //            try
+    //            {
+    //                _context.Update(roomAmenities);
+    //                await _context.SaveChangesAsync();
+    //            }
+    //            catch (DbUpdateConcurrencyException)
+    //            {
+    //                if (!RoomAmenitiesExists(roomAmenities.AmenitiesID))
+    //                {
+    //                    return NotFound();
+    //                }
+    //                else
+    //                {
+    //                    throw;
+    //                }
+    //            }
+    //            return RedirectToAction(nameof(Index));
+    //        }
+    //        ViewData["AmenitiesID"] = new SelectList(_context.Amenities, "AmenitiesID", "Name", roomAmenities.AmenitiesID);
+    //        ViewData["RoomID"] = new SelectList(_context.Rooms, "RoomID", "Name", roomAmenities.RoomID);
+    //        return View(roomAmenities);
+    //    }
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(roomAmenities);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!RoomAmenitiesExists(roomAmenities.AmenitiesID))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["AmenitiesID"] = new SelectList(_context.Amenities, "AmenitiesID", "Name", roomAmenities.AmenitiesID);
-            ViewData["RoomID"] = new SelectList(_context.Rooms, "RoomID", "Name", roomAmenities.RoomID);
-            return View(roomAmenities);
-        }
+    //    // GET: RoomAmenities/Delete/5
+    //    public async Task<IActionResult> Delete(int? id)
+    //    {
+    //        if (id == null)
+    //        {
+    //            return NotFound();
+    //        }
 
-        // GET: RoomAmenities/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+    //        var roomAmenities = await _context.RoomAmenities
+    //            .Include(r => r.Amenities)
+    //            .Include(r => r.Room)
+    //            .FirstOrDefaultAsync(m => m.AmenitiesID == id);
+    //        if (roomAmenities == null)
+    //        {
+    //            return NotFound();
+    //        }
 
-            var roomAmenities = await _context.RoomAmenities
-                .Include(r => r.Amenities)
-                .Include(r => r.Room)
-                .FirstOrDefaultAsync(m => m.AmenitiesID == id);
-            if (roomAmenities == null)
-            {
-                return NotFound();
-            }
+    //        return View(roomAmenities);
+    //    }
 
-            return View(roomAmenities);
-        }
+    //    // POST: RoomAmenities/Delete/5
+    //    [HttpPost, ActionName("Delete")]
+    //    [ValidateAntiForgeryToken]
+    //    public async Task<IActionResult> DeleteConfirmed(int id)
+    //    {
+    //        var roomAmenities = await _context.RoomAmenities.FindAsync(id);
+    //        _context.RoomAmenities.Remove(roomAmenities);
+    //        await _context.SaveChangesAsync();
+    //        return RedirectToAction(nameof(Index));
+    //    }
 
-        // POST: RoomAmenities/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var roomAmenities = await _context.RoomAmenities.FindAsync(id);
-            _context.RoomAmenities.Remove(roomAmenities);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool RoomAmenitiesExists(int id)
-        {
-            return _context.RoomAmenities.Any(e => e.AmenitiesID == id);
-        }
+    //    private bool RoomAmenitiesExists(int id)
+    //    {
+    //        return _context.RoomAmenities.Any(e => e.AmenitiesID == id);
+    //    }
     }
 }
