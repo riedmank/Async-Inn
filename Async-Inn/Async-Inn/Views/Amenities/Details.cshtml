@@ -2,26 +2,16 @@
 
 @{
     ViewData["Title"] = "Details";
+    Layout = "_Header";
 }
 
-<head>
-    <link rel="stylesheet" href="~/StyleSheet.css" />
-</head>
-<h2>Async Inn Hotel Manager</h2>
-<nav>
-    <a href="/Home">Home</a>
-    <a href="/Hotels">Add a Hotel</a>
-    <a href="/Amenities">Add Amenities</a>
-    <a href="/Rooms">Add a Room</a>
-    <a href="/HotelRooms">Add a Room to a Hotel</a>
-    <a href="/RoomAmenities">View Amenities in each Room</a>
-</nav>
+@await Html.PartialAsync("_NavigationPartial")
 
 <h2>Details</h2>
 
 <article>
+    <h4>Amenities</h4>
     <div>
-        <h4>Amenities</h4>
         <hr />
         <dl>
             <dt>
