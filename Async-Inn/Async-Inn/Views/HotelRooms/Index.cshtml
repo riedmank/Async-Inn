@@ -17,6 +17,9 @@
         <thead>
             <tr>
                 <th>
+                    @Html.DisplayNameFor(model => model.RoomNumber)
+                </th>
+                <th>
                     @Html.DisplayNameFor(model => model.Rate)
                 </th>
                 <th>
@@ -36,6 +39,9 @@
             {
                 <tr>
                     <td>
+                        @Html.DisplayFor(modelItem => item.RoomNumber)
+                    </td>
+                    <td>
                         @Html.DisplayFor(modelItem => item.Rate)
                     </td>
                     <td>
@@ -50,6 +56,7 @@
                     <td>
                         <a asp-action="Edit" asp-route-id="@item.RoomNumber">Edit</a> |
                         <a asp-action="Details" asp-route-id="@item.RoomID">Details</a> |
+                        @Html.ActionLink("Details", "Details", new { item.RoomID }) |
                         <a asp-action="Delete" asp-route-id="@item.RoomNumber">Delete</a>
                     </td>
                 </tr>
