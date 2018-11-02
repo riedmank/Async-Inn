@@ -35,12 +35,12 @@ namespace AsyncInn.Models.Services
             return await _context.Rooms.FirstOrDefaultAsync(x => x.RoomID == id);
         }
 
-        public IEnumerable<HotelRoom> GetHotelRoomsByRoom(int RoomID)
+        public HotelRoom GetHotelRoomByRoom(int RoomID)
         {
             var hotelRoom = _context.HotelRooms
                 .Where(x => x.RoomID == RoomID)
                 .Include(h => h.Hotel)
-                .Include(r => r.Room);
+                .Include(r => r.Room).FirstOrDefault();
             return hotelRoom;
         }
 

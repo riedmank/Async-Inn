@@ -2,20 +2,10 @@
 
 @{
     ViewData["Title"] = "Edit";
+    Layout = "_Header";
 }
 
-<head>
-    <link rel="stylesheet" href="~/StyleSheet.css" />
-</head>
-<h2>Async Inn Hotel Manager</h2>
-<nav>
-    <a href="/Home">Home</a>
-    <a href="/Hotels">Add a Hotel</a>
-    <a href="/Amenities">Add Amenities</a>
-    <a href="/Rooms">Add a Room</a>
-    <a href="/HotelRooms">Add a Room to a Hotel</a>
-    <a href="/RoomAmenities">View Amenities in each Room</a>
-</nav>
+@await Html.PartialAsync("_NavigationPartial")
 
 <h2>Edit</h2>
 
@@ -36,7 +26,7 @@
                 <div>
                     <label asp-for="Address"></label>
                     <input asp-for="Address" />
-                    <span asp-validation-for="Address" ></span>
+                    <span asp-validation-for="Address"></span>
                 </div>
                 <div>
                     <label asp-for="Phone"></label>
@@ -55,7 +45,7 @@
     </div>
 </article>
 
-    @section Scripts {
-        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-    }
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
 

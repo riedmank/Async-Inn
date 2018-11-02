@@ -2,22 +2,12 @@
 
 @{
     ViewData["Title"] = "Index";
+    Layout = "_Header";
 }
 
-<head>
-    <link rel="stylesheet" href="~/StyleSheet.css" />
-</head>
+@await Html.PartialAsync("_NavigationPartial")
 
 <h2>Add Rooms to a Hotel</h2>
-
-<nav>
-    <a href="/Home">Home</a>
-    <a href="/Hotels">Add a Hotel</a>
-    <a href="/Amenities">Add Amenities</a>
-    <a href="/Rooms">Add a Room</a>
-    <a href="/HotelRooms">Add a Room to a Hotel</a>
-    <a href="/RoomAmenities">View Amenities in each Room</a>
-</nav>
 
 <article>
     <p>
@@ -59,7 +49,7 @@
                     </td>
                     <td>
                         <a asp-action="Edit" asp-route-id="@item.RoomNumber">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.RoomNumber">Details</a> |
+                        <a asp-action="Details" asp-route-id="@item.RoomID">Details</a> |
                         <a asp-action="Delete" asp-route-id="@item.RoomNumber">Delete</a>
                     </td>
                 </tr>

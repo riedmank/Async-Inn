@@ -13,7 +13,7 @@ namespace AsyncInn.Models.Interfaces
         Task<List<Room>> GetRooms();
         Task<Room> GetRoom(int? id);
 
-        IEnumerable<HotelRoom> GetHotelRoomsByRoom(int RoomID);
+        HotelRoom GetHotelRoomByRoom(int RoomNumber);
         IEnumerable<RoomAmenities> GetRoomAmenitiesByRoom(int RoomID);
     }
 }
