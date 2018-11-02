@@ -44,12 +44,12 @@ namespace AsyncInn.Models.Services
             return hotelRoom;
         }
 
-        public IEnumerable<RoomAmenities> GetRoomAmenitiesByRoom(int RoomID)
+        public RoomAmenities GetRoomAmenitiesByRoom(int RoomID, int AmenitiesID)
         {
             var roomAmenities = _context.RoomAmenities
-                .Where(x => x.RoomID == RoomID)
+                .Where(x => x.RoomID == RoomID && x.AmenitiesID == AmenitiesID)
                 .Include(a => a.Amenities)
-                .Include(r => r.Room);
+                .Include(r => r.Room).FirstOrDefault();
             return roomAmenities;
         }
 
