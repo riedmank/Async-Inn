@@ -17,6 +17,11 @@ namespace AsyncInn
             CreateWebHostBuilder(args).Build().Run();
         }
 
+        /// <summary>
+        /// Creates WebHost Builder, tells Server to use Startup file
+        /// </summary>
+        /// <param name="args">Arguments</param>
+        /// <returns>Returns Webhost Builder</returns>
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>();

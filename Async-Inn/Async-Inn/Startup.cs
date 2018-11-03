@@ -23,8 +23,10 @@ namespace AsyncInn
             Configuration = configuration;
         }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
+        /// <summary>
+        /// Configures services for use by the Server
+        /// </summary>
+        /// <param name="services">Takes in Collection of Services</param>
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
@@ -39,7 +41,11 @@ namespace AsyncInn
             services.AddTransient<IRoom, RoomService>();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        /// <summary>
+        /// Configures HTTP request pipeline
+        /// </summary>
+        /// <param name="app">Application</param>
+        /// <param name="env">Environment</param>
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())

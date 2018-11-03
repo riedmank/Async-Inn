@@ -14,6 +14,10 @@ namespace AsyncInn.Data
 
         }
 
+        /// <summary>
+        /// Seed values loaded here into Database
+        /// </summary>
+        /// <param name="modelBuilder">Model Builder</param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<RoomAmenities>().HasKey(
