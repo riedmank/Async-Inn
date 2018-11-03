@@ -24,14 +24,22 @@ namespace AsyncInn.Controllers
             _context = context;
         }
 
-        // GET: RoomAmenities
+        /// <summary>
+        /// Gets all Room Amenities
+        /// </summary>
+        /// <returns>Returns Index view of Room Amenities</returns>
         public async Task<IActionResult> Index()
         {
             var asyncInnDbContext = _context.RoomAmenities.Include(r => r.Amenities).Include(r => r.Room);
             return View(await asyncInnDbContext.ToListAsync());
         }
 
-        // GET: RoomAmenities/Details/5
+        /// <summary>
+        /// Details of specific Room Amenity
+        /// </summary>
+        /// <param name="RoomID">Room ID</param>
+        /// <param name="AmenitiesID">Amenity ID</param>
+        /// <returns>Returns Detail view of Room Amenity</returns>
         public IActionResult Details(int RoomID, int AmenitiesID)
         {
             var roomAmenities = _room.GetRoomAmenitiesByRoom(RoomID, AmenitiesID);
@@ -43,7 +51,10 @@ namespace AsyncInn.Controllers
             return View(roomAmenities);
         }
 
-        // GET: RoomAmenities/Create
+        /// <summary>
+        /// Create Room Amenity
+        /// </summary>
+        /// <returns>Returns Create view of Room Amenities</returns>
         public IActionResult Create()
         {
             ViewData["AmenitiesID"] = new SelectList(_context.Amenities, "AmenitiesID", "Name");
@@ -51,9 +62,11 @@ namespace AsyncInn.Controllers
             return View();
         }
 
-        // POST: RoomAmenities/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// Create Room Amenity
+        /// </summary>
+        /// <param name="roomAmenities">Amenity and Room</param>
+        /// <returns>Returns Room Amenity view</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("AmenitiesID,RoomID")] RoomAmenities roomAmenities)
@@ -69,7 +82,12 @@ namespace AsyncInn.Controllers
             return View(roomAmenities);
         }
 
-        // GET: RoomAmenities/Delete/5
+        /// <summary>
+        /// Delete Room Amenity
+        /// </summary>
+        /// <param name="RoomID">Room ID</param>
+        /// <param name="AmenitiesID">Amenity ID</param>
+        /// <returns>Returns Delete Room Amenity view</returns>
         public IActionResult Delete(int RoomID, int AmenitiesID)
         {
             var roomAmenities = _room.GetRoomAmenitiesByRoom(RoomID, AmenitiesID);
@@ -81,7 +99,12 @@ namespace AsyncInn.Controllers
             return View(roomAmenities);
         }
 
-        // POST: RoomAmenities/Delete/5
+        /// <summary>
+        /// Delete Room Amenity
+        /// </summary>
+        /// <param name="RoomID">Room ID</param>
+        /// <param name="AmenitiesID">Room ID</param>
+        /// <returns>Returns Index view</returns>
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int RoomID, int AmenitiesID)

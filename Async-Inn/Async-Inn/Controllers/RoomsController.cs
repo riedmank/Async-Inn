@@ -20,12 +20,20 @@ namespace AsyncInn.Controllers
             _room = context;
         }
 
-        // GET: Rooms
+        /// <summary>
+        /// Called on the Index page for Rooms
+        /// </summary>
+        /// <returns>Returns all rooms</returns>
         public async Task<IActionResult> Index()
         {
             return View(await _room.GetRooms());
         }
 
+        /// <summary>
+        /// Searches for a specific Room
+        /// </summary>
+        /// <param name="SearchField">Search string from the user</param>
+        /// <returns>Returns searched for room</returns>
         [HttpPost]
         public async Task<IActionResult> Index(string SearchField)
         {
@@ -36,7 +44,11 @@ namespace AsyncInn.Controllers
             return View(Rooms);
         }
 
-        // GET: Rooms/Details/5
+        /// <summary>
+        /// Gets Details for a specific Room
+        /// </summary>
+        /// <param name="id">Room ID from View</param>
+        /// <returns>Returns specific Room</returns>
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -54,15 +66,20 @@ namespace AsyncInn.Controllers
             return View(room);
         }
 
-        // GET: Rooms/Create
+        /// <summary>
+        /// Displays the Create View
+        /// </summary>
+        /// <returns>Returns the Create View</returns>
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Rooms/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// Creates a Room
+        /// </summary>
+        /// <param name="room">User input about the Room</param>
+        /// <returns>Returns the Room just added</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("RoomID,Name,Layout")] Room room)
@@ -75,7 +92,11 @@ namespace AsyncInn.Controllers
             return View(room);
         }
 
-        // GET: Rooms/Edit/5
+        /// <summary>
+        /// Edit a Room view
+        /// </summary>
+        /// <param name="id">ID of Room to be Edited</param>
+        /// <returns>Returns the Edit view of the Room to be Edited</returns>
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -92,9 +113,12 @@ namespace AsyncInn.Controllers
             return View(room);
         }
 
-        // POST: Rooms/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// Edit a Room View
+        /// </summary>
+        /// <param name="id">ID of Room that is being Edited</param>
+        /// <param name="room">New information for the Room</param>
+        /// <returns>Returns the Room that was Edited</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("RoomID,Name,Layout")] Room room)
@@ -126,7 +150,11 @@ namespace AsyncInn.Controllers
             return View(room);
         }
 
-        // GET: Rooms/Delete/5
+        /// <summary>
+        /// Delete a Room View
+        /// </summary>
+        /// <param name="id">ID of the Room to be Deleted</param>
+        /// <returns>Returns the Delete view for a Room</returns>
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -144,7 +172,11 @@ namespace AsyncInn.Controllers
             return View(room);
         }
 
-        // POST: Rooms/Delete/5
+        /// <summary>
+        /// Delete a Room
+        /// </summary>
+        /// <param name="id">ID of the Room to be Deleted</param>
+        /// <returns>Returns Index view</returns>
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
