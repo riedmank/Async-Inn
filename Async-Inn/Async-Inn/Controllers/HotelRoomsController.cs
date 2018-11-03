@@ -32,9 +32,9 @@ namespace AsyncInn.Controllers
         }
 
         // GET: HotelRooms/Details/5
-        public IActionResult Details(int RoomID)
+        public IActionResult Details(int id)
         {
-            var hotelRoom =  _room.GetHotelRoomByRoom(RoomID);
+            var hotelRoom =  _room.GetHotelRoomByRoom(id);
             
             if (hotelRoom == null)
             {
