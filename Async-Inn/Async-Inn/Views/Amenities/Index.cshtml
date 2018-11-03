@@ -1,25 +1,16 @@
 ﻿@model IEnumerable<AsyncInn.Models.Amenities>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Add Amenities";
+    Layout = "_Header";
 }
 
-<head>
-    <link rel="stylesheet" href="~/StyleSheet.css" />
-</head>
+@await Html.PartialAsync("_NavigationPartial")
 
 <h2>Add Amenities</h2>
 
-<nav>
-    <a href="/Home">Home</a>
-    <a href="/Hotels">Add a Hotel</a>
-    <a href="/Amenities">Add Amenities</a>
-    <a href="/Rooms">Add a Room</a>
-    <a href="/HotelRooms">Add a Room to a Hotel</a>
-    <a href="/RoomAmenities">View Amenities in each Room</a>
-</nav>
-
 <article>
+    <h4>Amenities</h4>
     <p>
         <a asp-action="Create">Create New</a>
     </p>

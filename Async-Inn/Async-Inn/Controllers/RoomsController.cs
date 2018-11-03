@@ -26,6 +26,16 @@ namespace AsyncInn.Controllers
             return View(await _room.GetRooms());
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Index(string SearchField)
+        {
+            var Rooms = await _room.GetRooms();
+
+            Rooms = Rooms.Where(room => room.Name.Contains(SearchField)).ToList();
+
+            return View(Rooms);
+        }
+
         // GET: Rooms/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -34,7 +44,7 @@ namespace AsyncInn.Controllers
                 return NotFound();
             }
 
-            Room room = await _room.GetRoom(id);
+            var room = await _room.GetRoom(id);
 
             if (room == null)
             {
@@ -73,7 +83,7 @@ namespace AsyncInn.Controllers
                 return NotFound();
             }
 
-            Room room = await _room.GetRoom(id);
+            var room = await _room.GetRoom(id);
 
             if (room == null)
             {
@@ -124,7 +134,7 @@ namespace AsyncInn.Controllers
                 return NotFound();
             }
 
-            Room room = await _room.GetRoom(id);
+            var room = await _room.GetRoom(id);
 
             if (room == null)
             {

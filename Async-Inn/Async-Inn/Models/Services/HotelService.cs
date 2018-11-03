@@ -25,7 +25,7 @@ namespace AsyncInn.Models.Services
 
         public async Task DeleteHotel(int id)
         {
-            Hotel hotel = await GetHotel(id);
+            var hotel = await GetHotel(id);
             _context.Hotels.Remove(hotel);
             await _context.SaveChangesAsync();
         }

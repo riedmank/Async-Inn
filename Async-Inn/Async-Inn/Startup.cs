@@ -16,7 +16,7 @@ namespace AsyncInn
 {
     public class Startup
     {
-        public IConfiguration Configuration { get; }
+        private IConfiguration Configuration { get; }
 
         public Startup(IConfiguration configuration)
         {
@@ -31,7 +31,7 @@ namespace AsyncInn
 
             services.AddDbContext<AsyncInnDbContext>(options =>
             {
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+                options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]);
             });
 
             services.AddTransient<IAmenities, AmenitiesService>();

@@ -25,7 +25,7 @@ namespace AsyncInn.Models.Services
 
         public async Task DeleteAmenity(int id)
         {
-            Amenities amenities = await GetAmenities(id);
+            var amenities = await GetAmenities(id);
             _context.Amenities.Remove(amenities);
             await _context.SaveChangesAsync();
         }
