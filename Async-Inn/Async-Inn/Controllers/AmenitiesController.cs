@@ -20,13 +20,20 @@ namespace AsyncInn.Controllers
             _amenities = context;
         }
 
-        // GET: Amenities
+        /// <summary>
+        /// Get Amenities
+        /// </summary>
+        /// <returns>Return Index view of Amenities</returns>
         public async Task<IActionResult> Index()
         {
             return View(await _amenities.GetAmenities());
         }
 
-        // GET: Amenities/Details/5
+        /// <summary>
+        /// Get Amenity
+        /// </summary>
+        /// <param name="id">Amenity ID</param>
+        /// <returns>Returns Detail view of Amenity</returns>
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -44,15 +51,20 @@ namespace AsyncInn.Controllers
             return View(amenities);
         }
 
-        // GET: Amenities/Create
+        /// <summary>
+        /// Create Amenity
+        /// </summary>
+        /// <returns>Returns Amenity Create view</returns>
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Amenities/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// Create Amenity
+        /// </summary>
+        /// <param name="amenities">Create Amenity information</param>
+        /// <returns>Returns Amenity view</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("AmenitiesID,Name")] Amenities amenities)
@@ -65,7 +77,11 @@ namespace AsyncInn.Controllers
             return View(amenities);
         }
 
-        // GET: Amenities/Edit/5
+        /// <summary>
+        /// Edit Amenity
+        /// </summary>
+        /// <param name="id">Amenity ID</param>
+        /// <returns>Returns Amenity Edit view</returns>
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -82,9 +98,12 @@ namespace AsyncInn.Controllers
             return View(amenities);
         }
 
-        // POST: Amenities/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// Edit Amenity
+        /// </summary>
+        /// <param name="id">Amenity ID</param>
+        /// <param name="amenities">Amenity Edit information</param>
+        /// <returns>Returns Amenity view</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("AmenitiesID,Name")] Amenities amenities)
@@ -116,7 +135,11 @@ namespace AsyncInn.Controllers
             return View(amenities);
         }
 
-        // GET: Amenities/Delete/5
+        /// <summary>
+        /// Delete Amenity
+        /// </summary>
+        /// <param name="id">Amenity ID</param>
+        /// <returns>Returns Delete Amenity view</returns>
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -134,7 +157,11 @@ namespace AsyncInn.Controllers
             return View(amenities);
         }
 
-        // POST: Amenities/Delete/5
+        /// <summary>
+        /// Delete Amenity
+        /// </summary>
+        /// <param name="id">Amenity ID</param>
+        /// <returns>Returns Amneity Index view</returns>
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

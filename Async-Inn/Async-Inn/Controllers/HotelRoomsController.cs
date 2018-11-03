@@ -24,14 +24,21 @@ namespace AsyncInn.Controllers
             _hotel = hotel;
         }
 
-        // GET: HotelRooms
+        /// <summary>
+        /// Gets Hotel Rooms
+        /// </summary>
+        /// <returns>Returns Index view of Hotel Rooms</returns>
         public async Task<IActionResult> Index()
         {
             var asyncInnDbContext = _context.HotelRooms.Include(h => h.Hotel).Include(h => h.Room);
             return View(await asyncInnDbContext.ToListAsync());
         }
 
-        // GET: HotelRooms/Details/5
+        /// <summary>
+        /// Detail of Hotel Room
+        /// </summary>
+        /// <param name="id">Room ID</param>
+        /// <returns>Returns Detail view of Hotel Room</returns>
         public IActionResult Details(int id)
         {
             var hotelRoom =  _room.GetHotelRoomByRoom(id);
@@ -44,7 +51,10 @@ namespace AsyncInn.Controllers
             return View(hotelRoom);
         }
 
-        // GET: HotelRooms/Create
+        /// <summary>
+        /// Create Hotel Room
+        /// </summary>
+        /// <returns>Returns Create view for Hotel Room</returns>
         public IActionResult Create()
         {
             ViewData["HotelID"] = new SelectList(_context.Hotels, "HotelID", "Name");
@@ -52,9 +62,11 @@ namespace AsyncInn.Controllers
             return View();
         }
 
-        // POST: HotelRooms/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// Create Hotel Room
+        /// </summary>
+        /// <param name="hotelRoom">Hotel Room information</param>
+        /// <returns>Returns Hotel Room view</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("RoomNumber,HotelID,RoomID,Rate,PetFriendly")] HotelRoom hotelRoom)
@@ -70,7 +82,11 @@ namespace AsyncInn.Controllers
             return View(hotelRoom);
         }
 
-        // GET: HotelRooms/Edit/5
+        /// <summary>
+        /// Edit Hotel Room
+        /// </summary>
+        /// <param name="id">RoomNumber</param>
+        /// <returns>Returns Hotel Room Edit view</returns>
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -88,9 +104,12 @@ namespace AsyncInn.Controllers
             return View(hotelRoom);
         }
 
-        // POST: HotelRooms/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// Edit Hotel Room
+        /// </summary>
+        /// <param name="id">Room ID</param>
+        /// <param name="hotelRoom">Hotel Room Number</param>
+        /// <returns>Returns Hotel Room view</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("RoomNumber,HotelID,RoomID,Rate,PetFriendly")] HotelRoom hotelRoom)
@@ -125,7 +144,11 @@ namespace AsyncInn.Controllers
             return View(hotelRoom);
         }
 
-        // GET: HotelRooms/Delete/5
+        /// <summary>
+        /// Delete Hotel Room
+        /// </summary>
+        /// <param name="id">Room ID</param>
+        /// <returns>Returns Hotel Room Delete view</returns>
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -145,7 +168,11 @@ namespace AsyncInn.Controllers
             return View(hotelRoom);
         }
 
-        // POST: HotelRooms/Delete/5
+        /// <summary>
+        /// Delete Hotel Room
+        /// </summary>
+        /// <param name="id">Room ID</param>
+        /// <returns>Returns Index view of Hotel Rooms</returns>
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
